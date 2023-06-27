@@ -1,0 +1,8 @@
+<h1>Items in the cart</h1>
+<div *ngIf = "getcart().length >0"> 
+    <div *ngFor="let color of getcart()">
+        <p>{{color.name}}</p>
+
+    </div>
+</div>
+<div *ngIf = "getcart().length ==0">No books in cart</div>

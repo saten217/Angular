@@ -1,0 +1,6 @@
+<li>
+    <img src="{{color.src}}" width="100px" alt="{{color.name}}"/>
+    <p>{{ color.name | titlecase}}  {{ color.colors }} {{color.price |currency : 'INR'  }}</p>
+    <button *ngIf="!isInCart" (click)='addToCart()'>Bid</button>
+    <button *ngIf="isInCart"(click) ='removeFromCart()'>UnBid</button>
+</li>

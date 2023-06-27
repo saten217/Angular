@@ -1,11 +1,13 @@
 <p>colors works!</p>
-<button (click)='clickbutton()' [disabled]="isdisabled">show colors</button>
-<ul>
-    <img src="src" width="100px" alt="{{name}}"/>
-    <li>{{ name }}  {{ color }}</li>
-</ul>
+<!--for showing the details and disabling it-->
+<button (click)="isShowing=!isShowing">
+    <ng-container *ngIf="!isShowing" >Show Book</ng-container>
+    <ng-container *ngIf="isShowing">Hide Book</ng-container>
+</button>
 
-<ul>
-    <img src="src2" width="100px" alt="{{name2}}"/>
-    <li>{{ name2 }}  {{ color2 }}</li>
+<!--to iterate each element of piegons that are in the colors.service file-->
+<ul *ngIf="isShowing">
+    <li *ngFor="let color of color; let i= index"> 
+      <App-pigeon [color]="color"></App-pigeon>
+    </li>  
 </ul>

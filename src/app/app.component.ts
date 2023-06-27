@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';
+
 
 
 @Component({
@@ -13,4 +13,13 @@ import { NgModule } from '@angular/core';
 
 export class AppComponent {
   title = 'Pigeon Auction';
+  currentDateTime!: string;// Add definite assignment assertion (!)
+
+  constructor(private datePipe: DatePipe) {}
+
+  ngOnInit() {
+    const currentDate = new Date();
+    const formattedDate = this.datePipe.transform(currentDate, 'yyyy-MM-dd HH:mm:ss');
+    this.currentDateTime = formattedDate || ''; // Assign empty string if formattedDate is null
+  }
 }

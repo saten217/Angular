@@ -1,2 +1,27 @@
-<h1>  Start of the project </h1>
-<pigeon-colors></pigeon-colors>
+<nav class="flex justify-between p-3 bg-blue-900 text-white">
+    <div>
+        <p> Current Date is: {{currentDateTime}}</p>
+    </div>
+    <div><a routerLink="./colors">Piegons</a></div>
+    <div>
+        <a class="mx-4"routerLink="./cart">My Cart</a>
+        <a class="mx-4"routerLink="./login">Login</a>
+        <a class="mx-4"routerLink="./register">Register</a>
+    </div>
+</nav>
+
+
+<!--templet of colors component to be displayed in the main content page
+<App-colors></App-colors>
+<App-cart></App-cart> -->
+<div class="container"><router-outlet> </router-outlet></div>
+<footer class="flex justify-center p-4 bg-blue-900 text-white">
+    <div class="w-3/3">
+        <p>Contact Us: 8310285380</p>
+        <div class="w-2/6">
+            <p>Email</p>
+            <a href>saten217@gmail.com</a>
+        </div>
+        <p> Copyright © 2023 Tailwind Labs Inc.</p>
+    </div>
+</footer>
