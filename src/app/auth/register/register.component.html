@@ -1,20 +1,34 @@
 <div class="flex m-auto h-screen justify-center">
-    <form (ngSubmit)="submit1()" class="p-4 rounded-lg border m-auto w-1/3">
+    <form (ngSubmit)="submit1()" #myfrom="ngForm" class="p-4 rounded-lg border m-auto w-1/3">
         <h2 class="text-center text-xl">Register</h2>
         <div class="my-4 w-full">
             <label for="email">Email</label>
-            <input type="email" id="email" class="p-2 rounded w-full border" placeholder="Email address" [(ngModel)]="form1.email" name="email">
+            <input type="email" id="email" class="p-2 rounded w-full border" placeholder="Email address" [(ngModel)]="form1.email" name="email" #email="ngModel" required>
         </div>
+
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="p-2 bg-red-200 text-red-700 rounded">
+            Email must be entered
+        </div>
+
         <div class="my-4 w-full">
             <label for="password">Password</label>
-            <input type="password" id="password" class="p-2 rounded w-full border" placeholder="Password"[(ngModel)]="form1.password" name="pasword">
+            <input type="password" id="password" class="p-2 rounded w-full border" placeholder="Password"[(ngModel)]="form1.password" name="pasword" #password="ngModel" required>
+        </div>
+
+        <div *ngIf="password.invalid && (password.dirty|| password.touched)" class="p-2 bg-red-200 text-red-700 rounded">
+            password must be entered
         </div>
         <div class="my-4 w-full">
             <label for="password">Confirm-password</label>
-            <input type="password" id="password" class="p-2 rounded w-full border" placeholder="Confirm-password" [(ngModel)]="form1.retypepwd" name="retypepwd">
+            <input type="password" id="password" class="p-2 rounded w-full border" placeholder="Confirm-password" [(ngModel)]="form1.retypepwd" name="retypepwd" #retypepwd="ngModel" required>
         </div>
+
+        <div *ngIf="retypepwd.invalid && (retypepwd.dirty || retypepwd.touched)" class="p-2 bg-red-200 text-red-700 rounded">
+            confirm password must be entered
+        </div>
+
         <div class="my-4 w-full">
-            <input type="submit" id="submit" class="p-2 w-full bg-blue-700 text-white hover:bg-blue-900">
+            <input type="submit" [disabled]="myfrom.form.invalid" id="submit" class="p-2 w-full bg-blue-700 text-white hover:bg-blue-900">
         </div>
     </form>
 
