@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from './firebase.config';
 
 
 
@@ -11,15 +13,16 @@ import { DatePipe } from '@angular/common';
 
 
 
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Pigeon Auction';
   currentDateTime!: string;// Add definite assignment assertion (!)
 
   constructor(private datePipe: DatePipe) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const currentDate = new Date();
     const formattedDate = this.datePipe.transform(currentDate, 'yyyy-MM-dd HH:mm:ss');
     this.currentDateTime = formattedDate || ''; // Assign empty string if formattedDate is null
+   initializeApp(firebaseConfig);
   }
 }
