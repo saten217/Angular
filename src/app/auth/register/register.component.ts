@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterForm } from 'src/app/types/auth1';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,7 +9,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authservice:AuthService) { }
 
   form1: RegisterForm={
     email:'',
@@ -16,29 +17,18 @@ export class RegisterComponent implements OnInit {
     retypepwd:''
    };
 
-   isLoading: boolean=false;
+   
   
    passwordMatched:boolean = true;
    submit1(){
-    if(this.isLoading) return;
-    this.isLoading=true;
-
-    if(this.form1.password !== this.form1.retypepwd)
-    {
-      this.passwordMatched=false;
-      return;
-    }
-    const auth = getAuth();
-createUserWithEmailAndPassword(auth, this.form1.email, this.form1.password)
-  .then((userCredential) => {
-  console.log("usercedintials");
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  }).finally(()=>this.isLoading=false);
+    this.authservice.Register(this.form1);
    }
+
+   isLoading(){
+    return this.authservice.isLoading;
+   }
+
+   
 
   ngOnInit(): void {
   }

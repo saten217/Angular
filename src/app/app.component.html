@@ -5,8 +5,14 @@
     <div><a routerLink="./colors">Piegons</a></div>
     <div>
         <a class="mx-4"routerLink="./cart">My Cart</a>
-        <a class="mx-4"routerLink="./login">Login</a>
-        <a class="mx-4"routerLink="./register">Register</a>
+        <ng-container *ngIf="!isAuthenticated()">
+            <a class="mx-4"routerLink="./login">Login</a>
+            <a class="mx-4"routerLink="./register">Register</a>
+        </ng-container>
+        <ng-container *ngIf=" isAuthenticated()">
+            <a class="mx-4" routerLink="">Logout</a>
+        </ng-container>
+       
     </div>
 </nav>
 

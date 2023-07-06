@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from './firebase.config';
+import { AuthService } from './auth/auth.service';
 
 
 
@@ -17,7 +18,10 @@ export class AppComponent implements OnInit{
   title = 'Pigeon Auction';
   currentDateTime!: string;// Add definite assignment assertion (!)
 
-  constructor(private datePipe: DatePipe) {}
+  constructor(private datePipe: DatePipe, private authservice :AuthService) {}
+  isAuthenticated(){
+    return this.authservice.isAuthenticated;
+  }
 
   ngOnInit(): void {
     const currentDate = new Date();
@@ -25,4 +29,5 @@ export class AppComponent implements OnInit{
     this.currentDateTime = formattedDate || ''; // Assign empty string if formattedDate is null
    initializeApp(firebaseConfig);
   }
+  
 }

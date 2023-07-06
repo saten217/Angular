@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginForm } from 'src/app/types/Auth';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,24 +13,17 @@ export class LoginComponent implements OnInit {
   password:''
  };
 
- isLoading:boolean=false;
 
-  constructor() { }
+
+  constructor(private authservice: AuthService) { }
 
   submit()
   {
-    if(this.isLoading) return;
-    this.isLoading=true;
-    const auth = getAuth();
-signInWithEmailAndPassword(auth, this.form.email, this.form.password)
-  .then((userCredential) => {
-   alert("login successful");
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    alert("credientials doesnot match")
-  }).  finally(()=> this.isLoading=false);
+    this.authservice.Login(this.form);
+  }
+
+  isLoading(){
+    return this.authservice.isLoading;
   }
 
   ngOnInit(): void {
