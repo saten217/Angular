@@ -2,15 +2,14 @@
     <div>
         <p> Current Date is: {{currentDateTime}}</p>
     </div>
-    <div><a routerLink="./colors">Piegons</a></div>
     <div>
-        <a class="mx-4"routerLink="./cart">My Cart</a>
+        <button class="mx-4"routerLink="./cart">My Cart</button>
         <ng-container *ngIf="!isAuthenticated()">
-            <a class="mx-4"routerLink="./login">Login</a>
-            <a class="mx-4"routerLink="./register">Register</a>
+            <button class="mx-4"routerLink="./login">Login</button>
+            <button class="mx-4"routerLink="./register">Register</button>
         </ng-container>
         <ng-container *ngIf=" isAuthenticated()">
-            <a class="mx-4" routerLink="">Logout</a>
+            <button (click)="logout()" class="mx-4" routerLink="">Logout</button>
         </ng-container>
        
     </div>
