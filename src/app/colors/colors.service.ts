@@ -27,6 +27,18 @@ export class ColorsService {
       src:'../assets/images/2img.jpg',
       price:7000
         },
+        {
+          name: 'Grizzle',
+          colors:'White and black',
+          src:'../assets/images/Grizzle.png',
+          price:4000
+        },
+        {
+          name: 'Mely',
+          colors:'White and black',
+          src:'../assets/images/mely.jpg',
+          price:3000
+        }
     ]
   }
 

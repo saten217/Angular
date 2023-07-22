@@ -8,7 +8,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = 
-[{path: 'colors', component: ColorsComponent},
+[{path:'', component:ColorsComponent},
+  {path: 'colors', component: ColorsComponent},
 {path: 'cart', component: CartComponent,canActivate:[AuthGuard]},
 {path:'login', component:LoginComponent},
 {path:'register', component:RegisterComponent}];
