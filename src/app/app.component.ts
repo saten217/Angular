@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from './firebase.config';
 import { AuthService } from './auth/auth.service';
+import { from } from 'rxjs';
 
 
 
@@ -29,5 +30,7 @@ export class AppComponent implements OnInit{
     this.currentDateTime = formattedDate || ''; // Assign empty string if formattedDate is null
    initializeApp(firebaseConfig);
   }
-  
+  logout(){
+    this.authservice.logout();
+  }
 }

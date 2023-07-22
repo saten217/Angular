@@ -2,7 +2,7 @@
 <div class="flex -mx-2">
 <div class="w-full px-2"><!-->
 <div class="max-w-sm rounded overflow-hidden shadow-lg p-8">
-    <img class="w-full" src="{{color.src}}" alt="Sunset in the mountains">
+    <img class="h-100 w-100 object-cover" src="{{color.src}}" alt="Sunset in the mountains">
     <div class="px-6 py-4">
       <div class="font-bold text-xl mb-2">{{color.name | titlecase}}</div>
       <p class="text-gray-700 text-base">
@@ -10,9 +10,9 @@
       </p>
     </div>
     <div class="px-6 pt-4 pb-2">
-      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Pedegree</span>
+      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Races</span>
+      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Results</span>
     </div>
     <div> 
       <button *ngIf="!isInCart" (click)='addToCart()' class="p-2 w-full bg-blue-700 text-white hover:bg-blue-900">Bid</button>
